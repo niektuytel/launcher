@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shadow_file"
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="20dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/text_folder_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@null"
+        android:gravity="center"
+        android:padding="10dp"
+        android:hint="@string/default_folder_name"
+        android:textAllCaps="false"
+        android:textColor="@color/folder_title"
+        android:textColorHint="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:importantForAutofill="no"
+        android:inputType="textNoSuggestions" />
+
+<!--    <com.pukkol.launcher.ui.home.desktop.CellContainer-->
+<!--        android:id="@+id/cellContainer_folder"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="15dp"-->
+<!--        android:layout_marginBottom="15dp"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_folder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

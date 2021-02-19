@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.pukkol.launcher.ui.home.desktop.DesktopLayout
+        android:id="@+id/desktop_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
+
+    <com.pukkol.launcher.ui.home.desktop.PageSettingsView
+        android:id="@+id/desktop_option_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+    <com.pukkol.launcher.ui.home.desktop.edit.wallpaper.WallpaperOptionView
+        android:id="@+id/wallpaper_option_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <com.pukkol.launcher.ui.home.desktop.FolderView
+        android:id="@+id/folder_view"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <!--        <com.pukkol.launcher.ui.StatusBarView-->
+    <!--            android:id="@+id/status_view"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="0dp"/>-->
+
+    <!--        <com.pukkol.launcher.ui.home.desktop.PagerView-->
+    <!--            android:id="@+id/desktop_view"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_weight="6"-->
+    <!--            android:overScrollMode="never" />-->
+
+    <!--        <com.pukkol.launcher.ui.home.desktop.PageIndicatorView-->
+    <!--            android:id="@+id/page_indicator_view"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="@dimen/page_indicator_height"-->
+    <!--            android:background="@drawable/overlay_page_indicator" />-->
+
+    <!--        <com.pukkol.launcher.ui.home.desktop.DockView-->
+    <!--            android:id="@+id/dock_view"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_weight="1" />-->
+
+    <!--        <com.pukkol.launcher.ui.NavigationBarView-->
+    <!--            android:id="@+id/navigation_view"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="0dp"/>-->

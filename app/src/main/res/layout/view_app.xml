@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--DEVELOPERS TEST DUMMY-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_layout_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+<!--    android:background="#6D1EF306"-->
+
+
+
+    <com.pukkol.launcher.viewutil.ConstraintLayoutView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/app_padding_start"
+        android:paddingTop="@dimen/app_padding_top"
+        android:paddingEnd="@dimen/app_padding_end"
+        android:paddingBottom="@dimen/app_padding_bottom">
+
+
+        <!--    android:layout_margin="@dimen/padding_icon_image"-->
+        <com.pukkol.launcher.viewutil.ImageView
+            android:id="@+id/image_icon"
+            android:layout_width="@dimen/app_icon_width"
+            android:layout_height="@dimen/app_icon_height"
+            android:foregroundGravity="center"
+            android:src="@mipmap/ic_launcher"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/desc_key__image_icon" />
+
+        <com.pukkol.launcher.viewutil.TextView
+            android:id="@+id/text_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_margin_label_top"
+
+            android:ellipsize="end"
+            android:gravity="center"
+            android:inputType="none"
+            android:visibility="visible"
+
+            android:text="Pukkol"
+            android:textSize="@dimen/app_text_size"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:maxLines="1"
+
+            app:layout_constraintEnd_toEndOf="@+id/image_icon"
+            app:layout_constraintStart_toStartOf="@+id/image_icon"
+            app:layout_constraintTop_toBottomOf="@+id/image_icon" />
+
+
+        <com.pukkol.launcher.viewutil.TextView
+            android:id="@+id/text_notification"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bg_notification"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            android:gravity="center"
+            android:text="123"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            />
+    </com.pukkol.launcher.viewutil.ConstraintLayoutView>
+</LinearLayout>

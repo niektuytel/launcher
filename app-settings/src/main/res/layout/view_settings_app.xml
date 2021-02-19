@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="start"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/image_app_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical|start"
+        android:src="@mipmap/ic_settings"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/todo" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|start"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_app_remove"
+        app:layout_constraintStart_toEndOf="@+id/image_app_icon"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_app_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            tools:ignore="SpUsage" />
+
+        <TextView
+            android:id="@+id/text_edit_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#880000"
+            android:textSize="10dp"
+            tools:ignore="SpUsage" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/button_app_remove"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_settings_remove"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/todo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    time limit feature in fure will been builded  -->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/button_edit_limit"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:gravity="center"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/button_edit_remove"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="UseCompoundDrawables">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/image_edit_limit"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:src="@drawable/ic_time" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/intro_customize_time_limit"-->
+<!--            android:textColor="#E6E6E6"-->
+<!--            android:textSize="10dp"-->
+<!--            tools:ignore="SpUsage" />-->
+<!--    </LinearLayout>-->

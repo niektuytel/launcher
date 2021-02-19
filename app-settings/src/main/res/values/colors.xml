@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorSettingsIcon">#FFFFFF</color>
+    <color name="colorSettingsProgress">#000000</color>
+
+    <!--default-->
+    <color name="colorSettingsPrimary">#B9FFFFFF</color>
+    <color name="colorSettingsPrimaryDark">#000000</color>
+    <color name="colorSettingsAccent">#B9FFFFFF</color>
+</resources>

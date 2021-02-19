@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--layout definitions-->
+    <declare-styleable name="DarkenRoundedBackgroundLayout">
+
+        <attr name="round_number" format="float"/>
+        <attr name="background_alpha" format="float"/>
+        <attr name="round_back_color" format="color"/>
+        <attr name="round_type" format="enum">
+            <enum name="TOP" value="0"/>
+            <enum name="ALL" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="MotionRoundedBitmapLayout">
+        <attr name="blur" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ConstraintLayoutView">
+        <attr name="layout_weight_width" format="integer"/>
+        <attr name="layout_weight_height" format="integer"/>
+    </declare-styleable>
+
+<!--    <declare-styleable name="ImageView"></declare-styleable>-->
+
+    <declare-styleable name="MotionRadiusLayout">
+        <attr name="background_color" format="integer"/>
+        <attr name="radius_value" format="dimension"/>
+        <attr name="radius_type" format="enum">
+            <enum name="TOP" value="0"/>
+            <enum name="ALL" value="1"/>
+            <enum name="BOTTOM" value="1"/>
+        </attr>
+    </declare-styleable>
+
+
+
+
+
+
+
+
+<!--    <declare-styleable name="RangeSeekBar">-->
+<!--        &lt;!&ndash;RangeSeekBar common attrs&ndash;&gt;-->
+
+<!--        &lt;!&ndash;The maximum&ndash;&gt;-->
+<!--        <attr name="rsb_max" format="float"/>-->
+
+
+<!--        &lt;!&ndash;The minimum&ndash;&gt;-->
+<!--        <attr name="rsb_min" format="float"/>-->
+
+<!--        &lt;!&ndash;RangeSeekBar mode, single is normal seekBar, range is RangeSeekBar&ndash;&gt;-->
+<!--        <attr name="rsb_mode" format="enum">-->
+<!--            <enum name="single" value="1"/>-->
+<!--            <enum name="range" value="2"/>-->
+<!--        </attr>-->
+
+<!--        &lt;!&ndash;The min interval of the thumbs &ndash;&gt;-->
+<!--        <attr name="rsb_range_interval" format="float"/>-->
+
+<!--        &lt;!&ndash; 0 for the normal mode, greater than 1 to switch to scale mode&ndash;&gt;-->
+<!--        <attr name="rsb_tick_mark_number" format="integer"/>-->
+
+<!--        &lt;!&ndash;Scale mode-->
+<!--        Number according to the scale of the actual proportion of the distribution of the location (markTextArray must be a number)-->
+<!--        Other bisects the current layout (markTextArray can be any character)-->
+<!--        &ndash;&gt;-->
+<!--        <attr name="rsb_tick_mark_mode" format="enum">-->
+<!--            <enum name="number" value="0"/>-->
+<!--            <enum name="other" value="1"/>-->
+<!--        </attr>-->
+
+<!--        &lt;!&ndash;The tick mark text gravity &ndash;&gt;-->
+<!--        <attr name="rsb_tick_mark_gravity" format="enum">-->
+<!--            <enum name="left" value="0"/>-->
+<!--            <enum name="center" value="1"/>-->
+<!--            <enum name="right" value="2"/>-->
+<!--        </attr>-->
+
+<!--        &lt;!&ndash;The tick mark text array &ndash;&gt;-->
+<!--        <attr name="rsb_tick_mark_text_array" format="reference"/>-->
+
+<!--        &lt;!&ndash;The tick mark text margin bottom to progress &ndash;&gt;-->
+<!--        <attr name="rsb_tick_mark_text_margin" format="dimension" />-->
+
+<!--        <attr name="rsb_tick_mark_text_size" format="dimension" />-->
+
+<!--        <attr name="rsb_tick_mark_text_color" format="color" />-->
+
+<!--        &lt;!&ndash;it just work in range && number mode now&ndash;&gt;-->
+<!--        <attr name="rsb_tick_mark_in_range_text_color" format="color" />-->
+
+<!--        <attr name="rsb_progress_height" format="dimension"/>-->
+
+<!--        <attr name="rsb_progress_radius" format="dimension"/>-->
+
+<!--        &lt;!&ndash;the color of progress bar when in progress&ndash;&gt;-->
+<!--        <attr name="rsb_progress_color" format="color"/>-->
+
+<!--        &lt;!&ndash;the default color of the progress bar&ndash;&gt;-->
+<!--        <attr name="rsb_progress_default_color" format="color"/>-->
+
+<!--        &lt;!&ndash;the vertical RangeSeekBar draw orientation&ndash;&gt;-->
+<!--        <attr name="rsb_orientation" format="enum">-->
+<!--            <enum name="left" value="-1"/>-->
+<!--            <enum name="right" value="1"/>-->
+<!--        </attr>-->
+
+<!--        &lt;!&ndash;SeekBar attrs&ndash;&gt;-->
+<!--        <attr name="rsb_indicator_show_mode" format="enum">-->
+<!--            <enum name="showWhenTouch" value="0"/>-->
+<!--            <enum name="alwaysHide" value="1"/>-->
+<!--            <enum name="alwaysShowAfterTouch" value="2"/>-->
+<!--            <enum name="alwaysShow" value="3"/>-->
+<!--        </attr>-->
+<!--        <attr name="rsb_indicator_height" format="dimension" />-->
+<!--        <attr name="rsb_indicator_width" format="dimension" />-->
+<!--        &lt;!&ndash;indicator margin bottom to progress bar&ndash;&gt;-->
+<!--        <attr name="rsb_indicator_margin" format="dimension" />-->
+<!--        <attr name="rsb_indicator_text_size" format="dimension" />-->
+<!--        <attr name="rsb_indicator_text_color" format="color" />-->
+<!--        &lt;!&ndash;indicator arrow size, it just work when you not use rsb_indicator_drawable &ndash;&gt;-->
+<!--        <attr name="rsb_indicator_arrow_size" format="dimension" />-->
+<!--        &lt;!&ndash; must use 9 path ！！！&ndash;&gt;-->
+<!--        <attr name="rsb_indicator_drawable" format="reference"/>-->
+<!--        <attr name="rsb_indicator_background_color" format="color" />-->
+<!--        <attr name="rsb_indicator_padding_left" format="dimension" />-->
+<!--        <attr name="rsb_indicator_padding_right" format="dimension" />-->
+<!--        <attr name="rsb_indicator_padding_top" format="dimension" />-->
+<!--        <attr name="rsb_indicator_padding_bottom" format="dimension" />-->
+<!--        <attr name="rsb_indicator_radius" format="dimension" />-->
+<!--        <attr name="rsb_thumb_drawable" format="reference"/>-->
+<!--        &lt;!&ndash;the thumb inactivated is when you don't touch the thumb button&ndash;&gt;-->
+<!--        <attr name="rsb_thumb_inactivated_drawable" format="reference"/>-->
+<!--        <attr name="rsb_thumb_size" format="dimension"/>-->
+<!--        <attr name="rsb_thumb_scale_ratio" format="float"/>-->
+<!--    </declare-styleable>-->
+</resources>

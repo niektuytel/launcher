@@ -1,0 +1,66 @@
+<resources>
+    <dimen name="default_margin_0_5">4dp</dimen>
+    <dimen name="default_margin_1">8dp</dimen>
+    <dimen name="default_margin_2">16dp</dimen>
+
+    <dimen name="activity_margin">@dimen/default_margin_2</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="padding_lock_image">15dp</dimen>
+<!--    <dimen name="padding_icon_image">5dp</dimen>-->
+
+    <dimen name="radius_lock_border">5dp</dimen>
+
+    <dimen name="width_item_option_popup">200dp</dimen>
+    <dimen name="height_item_option_popup">46dp</dimen>
+
+    <!-- below ok -->
+
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+
+
+    <dimen name="menu_margin_top">10dp</dimen>
+    <dimen name="menu_searchBox_height">40dp</dimen>
+    <dimen name="menu_searchBox_margin">10dp</dimen>
+    <dimen name="menu_searchBox_padding">10dp</dimen>
+    <item name="menu_searchBox_maxRadius" type="dimen" format="float">0.25</item>
+
+    <dimen name="page_indicator_height">30dp</dimen>
+
+    <dimen name="desktop_options_height">100dp</dimen>
+
+    <dimen name="dock_height">85dp</dimen>
+    <dimen name="dock_margin">10dp</dimen>
+
+
+<!-- app item -->
+    <dimen name="app_width">80dp</dimen>
+    <dimen name="app_height">110dp</dimen>
+    <dimen name="app_icon_width">52dp</dimen>
+    <dimen name="app_icon_height">52dp</dimen>
+    <dimen name="app_margin_label_top">4dp</dimen>
+    <dimen name="app_padding_start">7dp</dimen>
+    <dimen name="app_padding_top">15dp</dimen>
+    <dimen name="app_padding_end">7dp</dimen>
+    <dimen name="app_padding_bottom">15dp</dimen>
+    <dimen name="app_text_size">15sp</dimen>
+
+
+    <dimen name="y_offset">72dp</dimen>
+
+</resources>

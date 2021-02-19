@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5c6bc0</color>
+    <color name="colorPrimaryDark">#4254b3</color>
+    <color name="colorAccent">#5c6bc0</color>
+
+    <color name="Light.Background">#f9f9f9</color>
+    <color name="Light.TextColor">#616161</color>
+    <color name="Light.TextColorSecondary">#9e9e9e</color>
+
+    <color name="Dark.Background">#424242</color>
+    <color name="Dark.TextColor">#ffffff</color>
+    <color name="Dark.TextColorSecondary">#9e9e9e</color>
+
+    <color name="Black.Background">#000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="dark_white">#DCDCDC</color>
+    <color name="black">#000000</color>
+    <color name="shade">#B0000000</color>
+
+    <color name="materialRed">#d6552e</color>
+    <color name="materialGreen">#b4c64a</color>
+    <color name="materialBlue">#1892cc</color>
+
+    <color name="introText">#ff444444</color>
+    <color name="introButton">#7d000000</color>
+
+    <color name="folder">#B3FFFFFF</color>
+    <color name="folder_title">#353535</color>
+    <color name="folder_title_hint">#FFFFFFFF</color>
+
+
+
+    <!-- intro fragment-->
+    <color name="slide_custom_control_background">#FFFFFF</color>
+    <color name="slide_custom_control_buttons_pressed">#E1E3E3E3</color>
+    <color name="slide_custom_control_buttons">#000000</color>
+
+    <color name="slide_custom_data_loader_background">#E91E63</color>
+    <color name="slide_custom_data_loader_buttons_pressed">#B5174D</color>
+    <color name="slide_custom_data_loader_buttons">#880E4F</color>
+
+    <color name="slide_custom_local_background">#009688</color>
+    <color name="slide_custom_local_buttons_pressed">#007065</color>
+    <color name="slide_custom_local_buttons">#004D40</color>
+
+    <color name="slide_custom_remote_background">#E91E63</color>
+    <color name="slide_custom_remote_buttons_pressed">#B5174D</color>
+    <color name="slide_custom_remote_buttons">#880E4F</color>
+
+    <color name="slide_custom_permissions_background">#9C27B0</color>
+    <color name="slide_custom_permissions_buttons_pressed">#721A81</color>
+    <color name="slide_custom_permissions_buttons">#4A148C</color>
+
+    <color name="slide_custom_agreement_background">#3F51B5</color>
+    <color name="slide_custom_agreement_buttons_pressed">#2F3C88</color>
+    <color name="slide_custom_agreement_buttons">#1A237E</color>
+
+
+
+
+    <!-- below ok -->
+    <color name="transparent">#00000000</color>
+
+
+
+    <!--intro-->
+    <color name="first_slide_background">#E91E63</color>
+    <color name="first_slide_buttons">#880E4F</color>
+    <color name="second_slide_background">#9C27B0</color>
+    <color name="second_slide_buttons">#4A148C</color>
+    <color name="third_slide_background">#009688</color>
+    <color name="third_slide_buttons">#004D40</color>
+    <color name="fourth_slide_background">#795548</color>
+    <color name="fourth_slide_buttons">#3E2723</color>
+
+    <!--menu-->
+    <color name="menu_fragment_background">#06061E</color>
+
+
+    <!--Splash Screen-->
+    <item name="splash_background" type="color">@color/colorSettingsPrimary</item>
+
+</resources>

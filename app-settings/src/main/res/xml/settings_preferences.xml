@@ -1,0 +1,11 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent">
+
+    <PreferenceCategory>
+        <Preference
+            app:title="@string/preference_remove_app"
+            app:icon="@drawable/ic_settings_remove"
+            app:key="remove_apps"/>
+    </PreferenceCategory>
+</PreferenceScreen>

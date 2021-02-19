@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="AppCombatTheme" >
+
+
+        <!-- =================== -->
+        <!-- Other widget styles -->
+        <!-- =================== -->
+
+        <!-- A style that may be applied to buttons or other selectable items
+             that should react to pressed and focus states, but that do not
+             have a clear visual border along the edges. -->
+        <attr format="reference" name="selectableItemBackground"/>
+        <!-- Background drawable for borderless standalone items that need focus/pressed states. -->
+        <attr format="reference" name="selectableItemBackgroundBorderless"/>
+
+
+    </declare-styleable>
+
+
+</resources>

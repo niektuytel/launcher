@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pukkol.launcher.ui.home.desktop.PageIndicatorView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_drawer_indicator"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:layout_gravity="bottom|center_horizontal"
+
+    android:alpha="0" />

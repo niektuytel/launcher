@@ -1,0 +1,11 @@
+<resources>
+<!--    <string name="app_name">Settings</string>-->
+
+    <!-- Settings Preference -->
+    <string name="preference_remove_app">Remove Apps</string>
+
+    <!-- Confirm Remove-->
+    <string name="confirm_remove_app_text">There is NO way to revert it. \nAre You Sure?</string>
+    <string name="confirm_remove_app_yes">Yes</string>
+    <string name="confirm_remove_app_no">No</string>
+</resources>
