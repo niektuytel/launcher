@@ -297,8 +297,9 @@ class TouchDragHelper(private val mTouchView: HomeTouchView) {
 
 
     private fun onItemDrag() : Boolean {
+        val ret = true
         if(!isOutsideThreshold()) {
-            return true
+            return ret
         }
 
         // draw item
@@ -308,11 +309,11 @@ class TouchDragHelper(private val mTouchView: HomeTouchView) {
         if (page is CellContainer) {
             pagination.onInteract(finger, page)
             pagination.setVisibleState(pages!!, currentPageIndex)
-            page.onCreateBorder(homeFingerItem, folderPreview)
+            page.onCreateBorder(homeFingerItem, page, folderPreview)
         }
 
 
-        return true
+        return ret
     }
 
     fun onItemDragStop() {

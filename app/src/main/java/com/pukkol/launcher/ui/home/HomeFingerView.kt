@@ -1,11 +1,7 @@
 package com.pukkol.launcher.ui.home
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Point
-import android.util.Log
+import android.graphics.*
 import android.util.Size
 import android.view.View
 import com.pukkol.launcher.data.model.Item
@@ -47,10 +43,14 @@ import com.pukkol.launcher.util.Tool
 class HomeFingerView(context: Context?) : View(context) {
     private var mItem: Any? = null
     private var itemBitmap: Bitmap? = null
-    private var pointFingerChild: Point? = null
-    private var pointFingerParent: Point? = null
-    private var pointParent = Point(0, 0)
-    private var pointChildParent: Point? = Point(0, 0)
+    private var startFingerLayout: Point? = null
+    private var startFingerParent: Point? = null
+    private var startFingerChild: Point? = null
+//    private var startParentLayout: Point? = null
+//    private var startChildParent: Point? = null
+//    private var startChildSize: Size? = null
+    var pointParentLayout = Point(0, 0)
+//    var pointChildParent = Point(0, 0)
 
     private val statusBarHeight = Display.STATUSBAR_HEIGHT
     private val paint = Paint()
@@ -93,21 +93,27 @@ class HomeFingerView(context: Context?) : View(context) {
             mItem = item
         }
 
-    val positionChild: Point
-        get() = Point(
-                pointParent.x + pointChildParent!!.x,
-                pointParent.y + pointChildParent!!.y
-        )
+//    val pointChild: Point
+//        get() = Point(
+//                pointParentLayout.x + startChildParent!!.x,
+//                pointParentLayout.y + startChildParent!!.y
+//        )
+//
+//    val sizeChild: Size
+//        get() = startChildSize!!
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        // error catch
-        if(item == null) {
-            return
+        // item draw
+        if(item != null) {
+            canvas.drawBitmap(
+                    itemBitmap!!,
+                    pointParentLayout.x.toFloat(),
+                    pointParentLayout.y.toFloat(),
+                    paint
+            )
         }
-
-        canvas.drawBitmap(itemBitmap!!, pointParent.x.toFloat(), pointParent.y.toFloat(), paint)
     }
 
     fun onDrag(finger: Point): Any {
@@ -119,19 +125,39 @@ class HomeFingerView(context: Context?) : View(context) {
         itemBitmap = Tool.viewToBitmap(item!!)
 
         // one time call
-        if (pointFingerChild == null) {
-            pointChildParent = item!!.childPosition
-            pointFingerParent = item!!.getParentFinger(finger, page)
-            pointFingerChild = item!!.getChildFinger(pointFingerParent!!)
+        if (startFingerLayout == null) {
+            startFingerLayout = finger
+            startFingerParent = item!!.getFingerParent(finger, page)
+            startFingerChild = item!!.getFingerChild(startFingerParent!!, item!!.childPosition!!)
         }
 
-        pointParent = Point(finger.x - pointFingerParent!!.x, finger.y - pointFingerParent!!.y)
+        item!!.childPosition = Point(
+                item!!.getFingerParent(finger, page).x - startFingerChild!!.x,
+                item!!.getFingerParent(finger, page).y - startFingerChild!!.y
+        )
+
+        pointParentLayout = Point(
+                finger.x - startFingerParent!!.x,
+                finger.y - startFingerParent!!.y
+        )
 
         this.invalidate()
         return currentPage
     }
 
     fun onDrop(finger: Point, touchDragHelper: TouchDragHelper) {
+//        // update child position
+//        val currentPage = updatePage()
+//        val page = currentPage as CellContainer
+//        val fingerParent = item!!.getParentFinger(finger, page)
+//        val childParent = Point(
+//                fingerParent.x - pointFingerChild!!.x,
+//                fingerParent.y - pointFingerChild!!.y
+//        )
+//
+//        item!!.childPosition = childParent
+
+
         /*if (item!!.location === Item.Location.DOCK) {
             // on location dock
             touchDragHelper.onItemDragStop()
@@ -143,23 +169,22 @@ class HomeFingerView(context: Context?) : View(context) {
             }
         }*/
 
-
-//        val currentPage = updatePage()
-//        val page = currentPage as CellContainer
-//        val fingerParent = item!!.getParentFinger(finger, page)
-//        val childParent = Point(
-//                fingerParent.x - pointFingerChild!!.x,
-//                fingerParent.y - pointFingerChild!!.y
-//        )
-//        item!!.childPosition = childParent
 //
 //        Log.d("childParent ", "onDrop: $childParent")
+//
+//        // occupied guardian check
+//        pointChildParent = Point(0, 0)
+//        pointFingerParent = Point(0, 0)
+//        pointParent = Point(0, 0)
 
-        // occupied guardian check
-        pointChildParent = Point(0, 0)
-        pointFingerParent = Point(0, 0)
-        pointParent = Point(0, 0)
-        pointFingerChild = null
+        // val currentPage = updatePage()
+        // val page = currentPage as CellContainer
+        // item!!.childPosition = pointChildParent
+        // item!!.setChildPosition(finger, startFingerChild!!, page)
+
+        startFingerLayout = null
+        startFingerParent = null
+        startFingerChild = null
 
 
         // this.invalidate()
@@ -197,18 +222,20 @@ class HomeFingerView(context: Context?) : View(context) {
         val i = mItem
         mItem = null
         itemBitmap = null
-        pointFingerChild = null
-        pointParent = Point(0, 0)
-        pointChildParent = Point(0, 0)
+        startFingerChild = null
+        startFingerParent = null
+        pointParentLayout = Point(0, 0)
+//        pointChildParent = Point(0, 0)
+        startFingerLayout = null
 
         this.invalidate()
         return i
     }
 
     fun isInsideParent(finger: Point): Boolean {
-        return  (finger.x >= pointParent.x && finger.x <= pointParent.x + item!!.width)// X
+        return  (finger.x >= pointParentLayout.x && finger.x <= (pointParentLayout.x + item!!.width))// X
                     &&
-                (finger.y >= pointParent.y && finger.y <= pointParent.y + item!!.height)// Y
+                (finger.y >= pointParentLayout.y && finger.y <= (pointParentLayout.y + item!!.height))// Y
     }
 
     private fun updatePage(): Any? {

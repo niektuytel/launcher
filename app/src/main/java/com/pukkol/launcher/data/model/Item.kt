@@ -319,6 +319,27 @@ abstract class Item : ConstraintLayoutView {
     // Menu & Folder
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     fun getParentFinger(finger: Point, page : CellContainer) : Point {
         val borderPosition = Point(
                 (parentPosition!!.x * page.cellWidth),
@@ -337,9 +358,137 @@ abstract class Item : ConstraintLayoutView {
     }
 
 
+    // in pixels
+    fun getPointChildLayout(page: CellContainer) : Point {
+        val pointParent = getPointParentLayout(page)
+        return Point(
+                pointParent.x + childPosition!!.x,
+                pointParent.y + childPosition!!.y
+        )
+    }
+
+    // in pixels
+    fun getPointChildParent() : Point {
+        return childPosition!!
+    }
+
+
+    // in pixels
+    fun getSizeChild() : Size {
+        return childSize!!
+    }
+
+    /**
+     * Returns the absolute pixel values of [childPosition] & [childSize].
+     */
+    fun getChildBorder(page: CellContainer): Rect {
+        val childPoint  = getPointChildLayout(page)
+        val childSize   = getSizeChild()
+        val childBorder = Rect()
+        childBorder.left    = childPoint.x
+        childBorder.top     = childPoint.y
+        childBorder.right   = childPoint.x + childSize.width
+        childBorder.bottom  = childPoint.y + childSize.height
+
+        return childBorder
+    }
+
+    /**
+     * Returns the absolute pixel values of [parentPosition] & [parentSize].
+     */
+    fun getParentBorder(page: CellContainer): Rect {
+        val parentPoint  = getPointParentLayout(page)
+        val parentSize   = getSizeParent(page)
+        val parentBorder = Rect()
+        parentBorder.left    = parentPoint.x
+        parentBorder.top     = parentPoint.y
+        parentBorder.right   = parentPoint.x + parentSize.width
+        parentBorder.bottom  = parentPoint.y + parentSize.height
+
+        return parentBorder
+    }
+
+    /**
+     * Set the absolute cell values of [parentPosition] & [parentSize].
+     */
+    fun setParentBorder(cellBorder: Rect) {
+        parentPosition = Point(cellBorder.left, cellBorder.top)
+        parentSize = Size(cellBorder.width(), cellBorder.height())
+    }
+
+
+
+
+
+
+    fun setChildPosition(finger: Point, fingerChild: Point, page: CellContainer) {
+        val parentBorder = getParentBorder(page)
+        val fingerParent = Point(
+                finger.x - parentBorder.left,
+                finger.y - parentBorder.top
+        )
+
+        childPosition!!.x = (fingerParent.x - fingerChild.x)
+        childPosition!!.y = (fingerParent.y - fingerChild.y)
+    }
+
+
+    // below ok
+
+
+    fun getFingerParent(finger: Point, page : CellContainer) : Point {
+        val parentPoint  = getPointParentLayout(page)
+        return Point(
+                finger.x - parentPoint.x,
+                finger.y - parentPoint.y
+        )
+    }
+
+    fun getFingerChild(fingerParent: Point, startChildParent: Point) : Point {
+        return Point(
+                fingerParent.x - startChildParent.x,
+                fingerParent.y - startChildParent.y
+        )
+    }
+
+    fun getPointParentLayout(page: CellContainer) : Point {
+        return Point(
+                parentPosition!!.x * page.cellWidth,
+                parentPosition!!.y * page.cellHeight
+        )
+    }
+
+
+    // in pixels
+    fun getSizeParent(page: CellContainer) : Size {
+        return Size(
+                parentSize!!.width * page.cellWidth,
+                parentSize!!.height * page.cellHeight
+        )
+    }
+
+
+//
+//    fun getFingerParent(finger: Point, page : CellContainer) : Point {
+//        val parentBorder = getParentBorder(page)
+//        return Point(finger.x - parentBorder.left, finger.y - parentBorder.top)
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Dock
-    val childParentPosition: Point
-        get() {
+    fun getChildParent() : Point {
             // Menu & Folder
             if (parentPosition!!.x == -1 && parentPosition!!.y == -1) {
                 return Point( this.width / 2, this.height / 2)

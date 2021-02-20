@@ -82,25 +82,20 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
      * for example around the child item
      * that is visible for the user
      */
-    fun onCreateBorder(homeFingerItem: HomeFingerView, folderPreview: FolderPreviewView?) {
-        val item = homeFingerItem.item
-        val childX = homeFingerItem.positionChild.x
-        val childY = homeFingerItem.positionChild.y
-        val childW = item!!.childSize!!.width
-        val childH = item.childSize!!.height
+    fun onCreateBorder(homeFingerItem: HomeFingerView, page: CellContainer, folderPreview: FolderPreviewView?) {
+        val item = homeFingerItem.item!!
+        val childBorder = Rect()
+        childBorder.left    = homeFingerItem.pointParentLayout.x + item.childPosition!!.x
+        childBorder.top     = homeFingerItem.pointParentLayout.y + item.childPosition!!.y
+        childBorder.right   = childBorder.left + item.childSize!!.width
+        childBorder.bottom  = childBorder.top + item.childSize!!.height
 
-        // child px border
-        val childPX = Rect()
-        childPX.left = childX
-        childPX.top = childY
-        childPX.right = childPX.left + childW
-        childPX.bottom = childPX.top + childH
-        if (childW != cellWidth || childH != cellHeight) {
+        if (childBorder.width() != cellWidth || childBorder.height() != cellHeight) {
             // dynamic parentCell
-            onDrawDynamicBorder(childPX, homeFingerItem)
+            onDrawDynamicBorder(childBorder, item, page)
         } else {
             // static parentCell
-            onDrawStaticBorder(childPX, homeFingerItem, folderPreview!!)
+            onDrawStaticBorder(childBorder, item, page, folderPreview!!)
         }
     }
 
@@ -152,18 +147,21 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
 
 
 
-    fun onDrawBorder(homeFingerItem: HomeFingerView) {
-        val item = homeFingerItem.item
-        val position = item!!.parentPosition
-        val size = item.parentSize
-        mBorderRect = Rect(
-                position!!.x * cellWidth,
-                position.y * cellHeight,
-                (position.x + size!!.width) * cellWidth,
-                (position.y + size.height) * cellHeight
-        )
-        this.invalidate()
-    }
+//    fun onDrawBorder(item: Item, page: CellContainer) {
+//        mBorderRect = item.getParentBorder(page)
+//
+////        val position = item!!.parentPosition
+////        val size = item.parentSize
+////        mBorderRect = Rect(
+////                position!!.x * cellWidth,
+////                position.y * cellHeight,
+////                (position.x + size!!.width) * cellWidth,
+////                (position.y + size.height) * cellHeight
+////        )
+//
+//
+//        this.invalidate()
+//    }
 
     fun onAnimateZoom(targetScale: Float) {
         isBackgroundZoomed = targetScale != 1.0f
@@ -269,48 +267,25 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
             return views
         }
 
-    private fun onDrawDynamicBorder(childPX: Rect, homeFingerItem: HomeFingerView) {
-        val item = homeFingerItem.item
-        val parentX = item!!.parentPosition!!.x * cellWidth
-        val parentY = item.parentPosition!!.y * cellHeight
-        val parentW = item.parentSize!!.width * cellWidth
-        val parentH = item.parentSize!!.height * cellHeight
-        var childX = childPX.left - parentX
-        var childY = childPX.top - parentY
-        val childW = item.childSize!!.width
-        val childH = item.childSize!!.height
+    private fun onDrawDynamicBorder(childBorder: Rect, item: Item, page: CellContainer) {
         val layoutCell = Rect(0, 0, cellSpanH, cellSpanV)
         val parentCell = Rect()
-        parentCell.left = childPX.left / cellWidth
-        parentCell.top = childPX.top / cellHeight
-        parentCell.right = ceil(childPX.right.toDouble() / cellWidth.toDouble()).toInt()
-        parentCell.bottom = ceil(childPX.bottom.toDouble() / cellHeight.toDouble()).toInt()
+        parentCell.left = childBorder.left / cellWidth
+        parentCell.top = childBorder.top / cellHeight
+        parentCell.right = ceil(childBorder.right.toDouble() / cellWidth.toDouble()).toInt()
+        parentCell.bottom = ceil(childBorder.bottom.toDouble() / cellHeight.toDouble()).toInt()
         borderOverflowGuard(layoutCell, parentCell)
 
         // update parent border
         if (isEmptySpan(parentCell)) {
-            item!!.parentSize = Size(parentCell.width(), parentCell.height())
-            item.parentPosition = Point(parentCell.left, parentCell.top)
-            onDrawBorder(homeFingerItem)
+            item.setParentBorder(parentCell)// cell border
+            mBorderRect = item.getParentBorder(page)// pixel border
+            this.invalidate()
         }
-
-        // update child border
-        if (childX + childW > parentW) {
-            childX = parentW - childW
-        } else if (childX < 0) {
-            childX = 0
-        }
-        if (childY + childH > parentH) {
-            childY = parentH - childH
-        } else if (childY < 0) {
-            childY = 0
-        }
-        item.childPosition = Point(childX, childY)
     }
 
-    private fun onDrawStaticBorder(childPX: Rect, homeFingerItem: HomeFingerView, folderPreview: FolderPreviewView) {
-        val item = homeFingerItem.item
-        val parentW = item!!.parentSize!!.width
+    private fun onDrawStaticBorder(childPX: Rect, item: Item, page: CellContainer, folderPreview: FolderPreviewView) {
+        val parentW = item.parentSize!!.width
         val parentH = item.parentSize!!.height
         val childW = item.childSize!!.width
         val childH = item.childSize!!.height
@@ -344,11 +319,33 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
 
         // update parent border
         if (!onCollide) {
-            item.parentSize = Size(parentCell.width(), parentCell.height())
-            item.parentPosition = Point(parentCell.left, parentCell.top)
-            onDrawBorder(homeFingerItem)
+            item.setParentBorder(parentCell)// cell border
+            mBorderRect = item.getParentBorder(page)// pixel border
+            this.invalidate()
         }
     }
+
+//        val parentX = item!!.parentPosition!!.x * cellWidth
+//        val parentY = item.parentPosition!!.y * cellHeight
+//        val parentW = item.parentSize!!.width * cellWidth
+//        val parentH = item.parentSize!!.height * cellHeight
+//        var childX = childPX.left - parentX
+//        var childY = childPX.top - parentY
+//        val childW = item.childSize!!.width
+//        val childH = item.childSize!!.height
+//
+//        // update child border
+//        if (childX + childW > parentW) {
+//            childX = parentW - childW
+//        } else if (childX < 0) {
+//            childX = 0
+//        }
+//        if (childY + childH > parentH) {
+//            childY = parentH - childH
+//        } else if (childY < 0) {
+//            childY = 0
+//        }
+//        item.setChildPosition(childX, childY)
 
     private fun onDrawBackground(canvas: Canvas) {
         canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), mBackgroundPaint)
