@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Point
 import android.net.Uri
-import android.view.MotionEvent
-import android.view.MotionEvent.ACTION_DOWN
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager

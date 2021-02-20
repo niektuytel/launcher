@@ -96,7 +96,7 @@ repositories {
 dependencies {
     // Tools
     implementation 'org.jetbrains:annotations:20.1.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.30"
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     // Personal
@@ -124,25 +124,25 @@ dependencies {
 
     // not sure
     implementation (
-            'com.mikepenz:fastadapter:5.3.4@aar',
+            'com.mikepenz:fastadapter:3.2.3@aar',
             'com.mikepenz:fastadapter-commons:3.0.0@aar',
             'com.mikepenz:fastadapter-extensions:3.0.0@aar'
     )
 
     implementation ('com.google.android.material:material:1.3.0')
-    implementation ('com.jakewharton.threetenabp:threetenabp:1.3.0')
+    implementation ('com.jakewharton.threetenabp:threetenabp:1.2.1')
     implementation ("com.github.MikeOrtiz:TouchImageView:3.0.1")
     implementation "com.google.code.gson:gson:2.8.6"
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
 
-    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
-    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.7'
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'cat.ereza:customactivityoncrash:2.3.0'
-    implementation 'de.psdev.licensesdialog:licensesdialog:2.1.0'
+    implementation 'de.psdev.licensesdialog:licensesdialog:1.8.3'
     implementation 'com.github.championswimmer:SimpleFingerGestures_Android_Library:1.2'
     implementation 'com.nononsenseapps:filepicker:4.2.1'
-    implementation 'org.slf4j:slf4j-android:1.7.30'
+    implementation 'org.slf4j:slf4j-android:1.7.21'
     implementation 'me.everything:overscroll-decor-android:1.1.0'
 
     implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
@@ -155,3 +155,437 @@ dependencies {
 
 }
 
+
+//apply plugin: 'com.android.application'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-kapt'
+//
+//android {
+//    compileSdkVersion 30
+//    buildToolsVersion "30.0.2"
+//
+//    defaultConfig {
+//        minSdkVersion 27
+//        targetSdkVersion 30
+//        applicationId "com.pukkol.launcher"
+//        versionCode 1
+//        versionName "0.0.1"
+//
+//        flavorDimensions "versionCode"
+//        multiDexEnabled false
+//
+//        buildConfigField "boolean", "IS_TEST_BUILD", "false"
+//        buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
+//        buildConfigField "String[]", "DETECTED_ANDROID_LOCALES", "${findUsedAndroidLocales()}"
+//        buildConfigField "String", "BUILD_DATE", "\"${getBuildDate()}\""
+//        buildConfigField "String", "GITHASH", "\"${getGitHash()}\""
+//
+//        resValue "string", "manifest_package_id", "com.pukkol.launcher"
+//        resValue 'string', 'app_name', "launcher"
+//
+//    }
+//
+//    productFlavors {
+//        flavorDefault {
+//        }
+//
+//        flavorGplay {
+//            buildConfigField "boolean", "IS_GPLAY_BUILD", "true"
+//        }
+//
+//        flavorNightly {
+//            buildConfigField "boolean", "IS_NIGHTLY_BUILD", "true"
+//
+//            versionCode = Integer.parseInt(new Date().format('yyMMdd'))
+//            versionName = new Date().format('yyMMdd')
+//        }
+//
+//        flavorGsantner {
+//            applicationId "net.gsantner.openlauncher"
+//            resValue 'string', 'app_name', "OL GS"
+//        }
+//    }
+//
+//
+//    compileOptions {
+//        sourceCompatibility kotlin_version
+//        targetCompatibility kotlin_version
+//    }
+//
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//        debug {
+//            applicationIdSuffix ".debug"
+//        }
+//    }
+//
+//    configurations.all {
+//        resolutionStrategy {
+//            eachDependency { details ->
+//                if (details.requested.group == 'com.android.support') {
+//                    if (details.requested.name != 'multidex' && details.requested.name != 'multidex-instrumentation') {
+//                        details.useVersion "${version_library_appcompat}"
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    packagingOptions {
+//        exclude 'META-INF/LICENSE-LGPL-2.1.txt'
+//        exclude 'META-INF/LICENSE-LGPL-3.txt'
+//        exclude 'META-INF/LICENSE-W3C-TEST'
+//    }
+//
+//    lintOptions {
+//        disable 'MissingTranslation'
+//        disable 'InvalidPackage'
+//    }
+//
+//}
+//
+//repositories {
+//    mavenCentral()
+//}
+//dependencies {
+//    // Tools
+//    implementation 'org.jetbrains:annotations:20.1.0'
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.30"
+//    implementation fileTree(dir: "libs", include: ["*.jar"])
+//
+//    // Personal
+//    implementation(
+//            project(":app-settings"),
+//            "io.github.dreierf:material-intro-screen:0.0.6",
+//            "com.karumi:dexter:6.2.2",
+//            'com.afollestad.material-dialogs:core:3.3.0',
+//            "me.everything:overscroll-decor-android:1.1.0",
+//
+//            'com.mikepenz:fastadapter:3.2.3@aar',
+//            'com.mikepenz:fastadapter-commons:3.0.0@aar',
+//            'com.mikepenz:fastadapter-extensions:3.0.0@aar'
+//    )
+//    implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
+//        transitive = true
+//    }
+////
+////    // Android
+////    implementation (
+////            "androidx.core:core-ktx:1.3.2",
+////            "androidx.palette:palette:1.0.0",
+////            "androidx.viewpager2:viewpager2:1.0.0",
+////            "androidx.fragment:fragment:1.2.5",
+////            "androidx.cardview:cardview:1.0.0",
+////            "androidx.constraintlayout:constraintlayout:2.0.4",
+////            "androidx.recyclerview:recyclerview:1.1.0",
+////            "androidx.navigation:navigation-ui:2.3.2",
+////            "androidx.navigation:navigation-fragment:2.3.2",
+////            "androidx.appcompat:appcompat:1.3.0-alpha02",
+////            "androidx.preference:preference:1.1.1",
+////            "com.google.android.material:material:1.3.0"
+////    )
+//
+//
+//
+////
+////    // Personal
+////    implementation(
+////            project(":app-settings"),                       // settings applications
+////            "io.github.dreierf:material-intro-screen:0.0.6",// intro screen
+////            "com.karumi:dexter:6.2.2"                       // permissions
+////    )
+//
+//    // Android
+//    implementation (
+//            "androidx.core:core-ktx:1.3.2",
+//            "androidx.palette:palette:1.0.0",
+//            "androidx.viewpager2:viewpager2:1.0.0",
+//            "androidx.fragment:fragment:1.2.5",
+//            "androidx.cardview:cardview:1.0.0",
+//            "androidx.constraintlayout:constraintlayout:2.0.4",
+//            "androidx.recyclerview:recyclerview:1.1.0",
+//            "androidx.navigation:navigation-ui:2.3.2",
+//            "androidx.navigation:navigation-fragment:2.3.2",
+//            "androidx.appcompat:appcompat:1.3.0-alpha02",
+//            "androidx.preference:preference:1.1.1"
+//    )
+//
+//
+//    // not sure
+//    implementation (
+//    )
+//
+//    implementation ('com.google.android.material:material:1.3.0')
+//    implementation ('com.jakewharton.threetenabp:threetenabp:1.2.1')
+//    implementation ("com.github.MikeOrtiz:TouchImageView:3.0.1")
+//    implementation "com.google.code.gson:gson:2.8.6"
+//    implementation 'com.makeramen:roundedimageview:2.3.0'
+//
+//
+//    implementation 'jp.wasabeef:recyclerview-animators:2.2.7'
+//    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+//    implementation 'cat.ereza:customactivityoncrash:2.3.0'
+//    implementation 'de.psdev.licensesdialog:licensesdialog:1.8.3'
+//    implementation 'com.github.championswimmer:SimpleFingerGestures_Android_Library:1.2'
+//    implementation 'com.nononsenseapps:filepicker:4.2.1'
+//    implementation 'org.slf4j:slf4j-android:1.7.21'
+//    implementation 'me.everything:overscroll-decor-android:1.1.0'
+//
+//    implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
+//        transitive = true
+//    }
+//
+//    implementation('com.github.turing-tech:MaterialScrollBar:13.3.0') {
+//        exclude group: 'com.android.support'
+//    }
+//
+//}
+//
+//
+//
+//
+//
+//
+//
+////apply plugin: 'com.android.application'
+////apply plugin: 'kotlin-android'
+////apply plugin: 'kotlin-android-extensions'
+////apply plugin: 'kotlin-kapt'
+////
+////android {
+////    compileSdkVersion version_compileSdk
+////    buildToolsVersion version_buildTools
+////
+////    defaultConfig {
+////        minSdkVersion version_minSdk
+////        targetSdkVersion version_compileSdk
+////
+////        flavorDimensions "versionCode"
+////        multiDexEnabled false
+////
+////
+////        buildConfigField "boolean", "IS_TEST_BUILD", "false"
+////        buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
+////        buildConfigField "String[]", "DETECTED_ANDROID_LOCALES", "${findUsedAndroidLocales()}"
+////        buildConfigField "String", "BUILD_DATE", "\"${getBuildDate()}\""
+////        buildConfigField "String", "GITHASH", "\"${getGitHash()}\""
+////        resValue "string", "manifest_package_id", "com.benny.openlauncher"
+////
+////        resValue 'string', 'app_name', "Launcher"
+////
+////        applicationId "com.pukkol.launcher"
+////        versionCode 41
+////        versionName "0.7.3"
+////    }
+////
+////    productFlavors {
+////        flavorDefault {}
+////
+////        flavorGplay {
+////            buildConfigField "boolean", "IS_GPLAY_BUILD", "true"
+////        }
+////
+////        flavorNightly {
+//////            buildConfigField "boolean", "IS_NIGHTLY_BUILD", "true"
+//////
+//////            versionCode = Integer.parseInt(new Date().format('yyMMdd'))
+//////            versionName = new Date().format('yyMMdd')
+//////            applicationId "com.pukkol.launcher"
+//////            resValue 'string', 'app_name', "OL Nightly"
+////        }
+////
+////        flavorGsantner {
+////            applicationId "net.gsantner.launcher"
+////            resValue 'string', 'app_name', "L GS"
+////        }
+////    }
+////
+////    compileOptions {
+////        sourceCompatibility '1.8'
+////        targetCompatibility '1.8'
+////    }
+////
+////    buildTypes {
+////        release {
+////            minifyEnabled false
+////            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+////        }
+////        debug {
+////            applicationIdSuffix ".debug"
+////        }
+////    }
+////
+////    configurations.all {
+////        resolutionStrategy {
+////            eachDependency { details ->
+////                if (details.requested.group == 'com.android.support') {
+////                    if (details.requested.name != 'multidex' && details.requested.name != 'multidex-instrumentation') {
+////                        details.useVersion "${version_library_appcompat}"
+////                    }
+////                }
+////            }
+////        }
+////    }
+////
+////    packagingOptions {
+////        exclude 'META-INF/LICENSE-LGPL-2.1.txt'
+////        exclude 'META-INF/LICENSE-LGPL-3.txt'
+////        exclude 'META-INF/LICENSE-W3C-TEST'
+////    }
+////
+////    lintOptions {
+////        disable 'MissingTranslation'
+////        disable 'InvalidPackage'
+////    }
+////
+////
+////
+////
+//////    compileSdkVersion 30
+//////    buildToolsVersion "30.0.2"
+//////    //
+//////
+//////    defaultConfig {
+//////        minSdkVersion 27
+//////        targetSdkVersion 30
+//////        applicationId "com.pukkol.launcher"
+//////        versionCode 1
+//////        versionName "0.0.1"
+//////        multiDexEnabled false
+//////        flavorDimensions "versionCode"
+//////
+//////        buildConfigField "boolean", "IS_TEST_BUILD", "false"
+//////        buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
+//////        buildConfigField "String[]", "DETECTED_ANDROID_LOCALES", "${findUsedAndroidLocales()}"
+//////        buildConfigField "String", "BUILD_DATE", "\"${getBuildDate()}\""
+//////        buildConfigField "String", "GITHASH", "\"${getGitHash()}\""
+//////
+//////        resValue "string", "manifest_package_id", "com.pukkol.launcher"
+//////        resValue 'string', 'app_name', "launcher"
+//////
+//////    }
+//////
+//////    productFlavors {
+//////        flavorDefault {
+//////        }
+//////
+//////        flavorGplay {
+//////            buildConfigField "boolean", "IS_GPLAY_BUILD", "true"
+//////        }
+//////
+//////        flavorNightly {
+//////            buildConfigField "boolean", "IS_NIGHTLY_BUILD", "true"
+//////
+//////            versionCode = Integer.parseInt(new Date().format('yyMMdd'))
+//////            versionName = new Date().format('yyMMdd')
+//////        }
+//////
+//////        flavorGsantner {
+//////            applicationId "net.gsantner.openlauncher"
+//////            resValue 'string', 'app_name', "OL GS"
+//////        }
+//////    }
+//////
+//////
+//////    compileOptions {
+//////        sourceCompatibility kotlin_version
+//////        targetCompatibility kotlin_version
+//////    }
+//////
+//////    buildTypes {
+//////        release {
+//////            minifyEnabled false
+//////            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//////        }
+//////        debug {
+//////            applicationIdSuffix ".debug"
+//////        }
+//////    }
+//////
+//////    configurations.all {
+//////        resolutionStrategy {
+//////            eachDependency { details ->
+//////                if (details.requested.group == 'com.android.support') {
+//////                    if (details.requested.name != 'multidex' && details.requested.name != 'multidex-instrumentation') {
+//////                        details.useVersion "${version_library_appcompat}"
+//////                    }
+//////                }
+//////            }
+//////        }
+//////    }
+//////
+//////    packagingOptions {
+//////        exclude 'META-INF/LICENSE-LGPL-2.1.txt'
+//////        exclude 'META-INF/LICENSE-LGPL-3.txt'
+//////        exclude 'META-INF/LICENSE-W3C-TEST'
+//////    }
+//////
+//////    lintOptions {
+//////        disable 'MissingTranslation'
+//////        disable 'InvalidPackage'
+//////    }
+////
+////}
+////
+////dependencies {
+////    // Personal
+////    implementation(
+////            project(":app-settings"),
+////            "io.github.dreierf:material-intro-screen:0.0.6",
+////            "com.karumi:dexter:6.2.2",
+////            'com.afollestad.material-dialogs:core:3.3.0',
+////            "me.everything:overscroll-decor-android:1.1.0",
+////            'com.mikepenz:fastadapter:5.3.4@aar',
+////            'com.mikepenz:fastadapter-commons:3.0.0@aar',
+////            'com.mikepenz:fastadapter-extensions:3.0.0@aar',
+////    )
+////    implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
+////        transitive = true
+////    }
+////
+////    // Android
+////    implementation (
+////            "androidx.core:core-ktx:1.3.2",
+////            "androidx.palette:palette:1.0.0",
+////            "androidx.viewpager2:viewpager2:1.0.0",
+////            "androidx.fragment:fragment:1.2.5",
+////            "androidx.cardview:cardview:1.0.0",
+////            "androidx.constraintlayout:constraintlayout:2.0.4",
+////            "androidx.recyclerview:recyclerview:1.1.0",
+////            "androidx.navigation:navigation-ui:2.3.2",
+////            "androidx.navigation:navigation-fragment:2.3.2",
+////            "androidx.appcompat:appcompat:1.3.0-alpha02",
+////            "androidx.preference:preference:1.1.1",
+////            "com.google.android.material:material:1.3.0"
+////    )
+////
+////
+////    // not sure
+////    implementation ('com.jakewharton.threetenabp:threetenabp:1.3.0')
+////    implementation ("com.github.MikeOrtiz:TouchImageView:3.0.1")
+////    implementation "com.google.code.gson:gson:2.8.6"
+////    implementation 'com.makeramen:roundedimageview:2.3.0'
+////
+////
+////    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+////    implementation 'cat.ereza:customactivityoncrash:2.3.0'
+////    implementation 'de.psdev.licensesdialog:licensesdialog:2.1.0'
+////    implementation 'com.github.championswimmer:SimpleFingerGestures_Android_Library:1.2'
+////    implementation 'com.nononsenseapps:filepicker:4.2.1'
+////    implementation 'org.slf4j:slf4j-android:1.7.30'
+////
+//////    implementation('com.github.turing-tech:MaterialScrollBar:13.3.0') {
+//////        exclude group: 'com.android.support'
+//////    }
+////
+////    repositories {
+////        mavenCentral()
+////    }
+////
+////}
+////
+////
