@@ -1,10 +1,6 @@
-![graphic](https://raw.githubusercontent.com/OpenLauncherTeam/openlauncher/master/metadata/en-US/featureGraphic.png)
+## (Development mode)
 
-### Description
-Launcher for let other people control your device or for one of the other options it will contain in the future
+it is still in development, 1 main thing that is still not working correctly is the Touch on item and drag.
+this need to been rebuilded, all items can been dragged and dropped from all type of size and location.
 
-
-
-### License
-
-The app is licensed with Apache 2.0.
+i leave this so as it is, later will come back to this. my head can not handle this at this moment.
