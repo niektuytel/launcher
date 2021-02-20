@@ -6,6 +6,7 @@
 </p>
 
 # Goal:
+- learn programming with `Java` & `Kotlin`
 - learn reading large code (from other devs)
 - update the code
 - change from java to kotlin the code
