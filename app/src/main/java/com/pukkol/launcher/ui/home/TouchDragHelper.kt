@@ -1,14 +1,18 @@
 package com.pukkol.launcher.ui.home
 
-import android.graphics.*
+import android.graphics.Point
+import android.graphics.PointF
 import android.util.Log
-import android.view.*
+import android.view.MotionEvent
 import android.view.MotionEvent.*
+import android.view.View
 import com.pukkol.launcher.data.model.Item
-import com.pukkol.launcher.ui.home.TouchDragHelper.DragMode.*
 import com.pukkol.launcher.ui.home.FragmentSwitcher.Companion.switchedState
 import com.pukkol.launcher.ui.home.FragmentSwitcher.SwitchedState.IN_EDIT_DESKTOP
-import com.pukkol.launcher.ui.home.desktop.*
+import com.pukkol.launcher.ui.home.TouchDragHelper.DragMode.*
+import com.pukkol.launcher.ui.home.desktop.CellContainer
+import com.pukkol.launcher.ui.home.desktop.DesktopFragment
+import com.pukkol.launcher.ui.home.desktop.FolderPreviewView
 import com.pukkol.launcher.ui.itemview.ItemAppView
 import com.pukkol.launcher.ui.itemview.ItemViewManager
 import com.pukkol.launcher.util.Display
@@ -40,12 +44,6 @@ class TouchDragHelper(private val mTouchView: HomeTouchView) {
     private var mItem : Item? = null
     private var isInsideParent = false
     private var finger = Point(-1, -1)
-    get() {
-        return field
-    }
-    set(value) {
-        field = value
-    }
     private var startingPoint = Point(0, 0)
     private var isDraggingLayout = false
 
@@ -138,10 +136,10 @@ class TouchDragHelper(private val mTouchView: HomeTouchView) {
         homeFingerItem = HomeFingerView(context)
         mTouchView.addView(homeFingerItem)
 
-         // testing
-         folderPreview.setBackgroundColor(Color.parseColor("#10000000"))
-         homeFingerItem.setBackgroundColor(Color.parseColor("#35FFFFFF"))
-         homeOptions.setBackgroundColor(Color.parseColor("#F1343434"))
+//         // testing
+//         folderPreview.setBackgroundColor(Color.parseColor("#10000000"))
+//         homeFingerItem.setBackgroundColor(Color.parseColor("#35FFFFFF"))
+//         homeOptions.setBackgroundColor(Color.parseColor("#F1343434"))
     }
 
     fun onBackPressed() {

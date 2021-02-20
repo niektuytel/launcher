@@ -6,7 +6,9 @@ import android.graphics.*
 import android.graphics.Paint.Join
 import android.util.AttributeSet
 import android.util.Size
-import android.view.*
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.pukkol.launcher.Setup
 import com.pukkol.launcher.data.model.Item
@@ -24,7 +26,7 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
     private val mPaint = Paint(1)
     private val mBorderPaint = Paint(1)
     private val mBackgroundPaint = Paint(1)
-    private var mBorderRect: Rect? = null
+    private var borderRect: Rect? = null
     private var mOccupied: Array<Array<Item?>>? = null
     var cellSpanH = 0
         private set
@@ -62,8 +64,8 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
         onDrawBackground(canvas)
 
         // draw preview border
-        if (mBorderRect != null) {
-            canvas.drawRect(mBorderRect!!, mBorderPaint)
+        if (borderRect != null) {
+            canvas.drawRect(borderRect!!, mBorderPaint)
         }
     }
 
@@ -73,7 +75,7 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {}
     fun onRemoveBorderParent() {
-        mBorderRect = null
+        borderRect = null
         this.invalidate()
     }
 
@@ -85,12 +87,12 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
     fun onCreateBorder(homeFingerItem: HomeFingerView, page: CellContainer, folderPreview: FolderPreviewView?) {
         val item = homeFingerItem.item!!
         val childBorder = Rect()
-        childBorder.left    = homeFingerItem.pointParentLayout.x + item.childPosition!!.x
-        childBorder.top     = homeFingerItem.pointParentLayout.y + item.childPosition!!.y
+        childBorder.left    = homeFingerItem.pointParentLayout.x + homeFingerItem.startChildParent!!.x
+        childBorder.top     = homeFingerItem.pointParentLayout.y + homeFingerItem.startChildParent!!.y
         childBorder.right   = childBorder.left + item.childSize!!.width
         childBorder.bottom  = childBorder.top + item.childSize!!.height
 
-        if (childBorder.width() != cellWidth || childBorder.height() != cellHeight) {
+        if (item.childSize!!.width != cellWidth || item.childSize!!.height != cellHeight) {
             // dynamic parentCell
             onDrawDynamicBorder(childBorder, item, page)
         } else {
@@ -270,6 +272,7 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
     private fun onDrawDynamicBorder(childBorder: Rect, item: Item, page: CellContainer) {
         val layoutCell = Rect(0, 0, cellSpanH, cellSpanV)
         val parentCell = Rect()
+
         parentCell.left = childBorder.left / cellWidth
         parentCell.top = childBorder.top / cellHeight
         parentCell.right = ceil(childBorder.right.toDouble() / cellWidth.toDouble()).toInt()
@@ -278,9 +281,29 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
 
         // update parent border
         if (isEmptySpan(parentCell)) {
-            item.setParentBorder(parentCell)// cell border
-            mBorderRect = item.getParentBorder(page)// pixel border
+            // update parent border
+            item.setParentBorder(parentCell)
+            borderRect = item.getParentBorder(page)
             this.invalidate()
+
+            // update child position
+            var childX = childBorder.left - borderRect!!.left
+            var childY = childBorder.top - borderRect!!.top
+            val childW = item.childSize!!.width
+            val childH = item.childSize!!.height
+
+            if (childX + childW > borderRect!!.width()) {
+                childX = borderRect!!.width() - childW
+            } else if (childX < 0) {
+                childX = 0
+            }
+            if (childY + childH > borderRect!!.height()) {
+                childY = borderRect!!.height() - childH
+            } else if (childY < 0) {
+                childY = 0
+            }
+
+            item.childPosition = Point(childX, childY)
         }
     }
 
@@ -320,7 +343,7 @@ open class CellContainer(context: Context?, attr: AttributeSet?, params: LayoutP
         // update parent border
         if (!onCollide) {
             item.setParentBorder(parentCell)// cell border
-            mBorderRect = item.getParentBorder(page)// pixel border
+            borderRect = item.getParentBorder(page)// pixel border
             this.invalidate()
         }
     }

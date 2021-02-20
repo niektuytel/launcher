@@ -277,7 +277,7 @@ abstract class Item : ConstraintLayoutView {
         setPageCurrentEvent(currentPage, location)
     }
 
-    fun onBorderOccupiedGuard() {
+    fun onBorderOccupiedGuard(removeBorder: Boolean) {
         val page = pageCurrentEvent as CellContainer?
         val border = parentBorder
         val size = parentSize
@@ -290,6 +290,8 @@ abstract class Item : ConstraintLayoutView {
                 parentPosition = point
             }
         }
+
+        if (!removeBorder) return
         page.onRemoveBorderParent()
     }// 1 cell size
 
@@ -436,7 +438,9 @@ abstract class Item : ConstraintLayoutView {
     // below ok
 
 
-    fun getFingerParent(finger: Point, page : CellContainer) : Point {
+    fun getFingerParent(finger: Point) : Point {
+        val page = pageCurrentEvent as CellContainer
+
         val parentPoint  = getPointParentLayout(page)
         return Point(
                 finger.x - parentPoint.x,

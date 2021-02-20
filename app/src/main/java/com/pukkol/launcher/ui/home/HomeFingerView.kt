@@ -1,8 +1,10 @@
 package com.pukkol.launcher.ui.home
 
 import android.content.Context
-import android.graphics.*
-import android.util.Size
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Point
 import android.view.View
 import com.pukkol.launcher.data.model.Item
 import com.pukkol.launcher.ui.home.desktop.CellContainer
@@ -43,11 +45,12 @@ import com.pukkol.launcher.util.Tool
 class HomeFingerView(context: Context?) : View(context) {
     private var mItem: Any? = null
     private var itemBitmap: Bitmap? = null
-    private var startFingerLayout: Point? = null
-    private var startFingerParent: Point? = null
-    private var startFingerChild: Point? = null
-//    private var startParentLayout: Point? = null
+//    private var startFingerLayout: Point? = null
+//    private var startFingerParent: Point? = null
+//    private var startFingerChild: Point? = null
 //    private var startChildParent: Point? = null
+    var startFingerParent: Point? = null
+    var startChildParent: Point? = null
 //    private var startChildSize: Size? = null
     var pointParentLayout = Point(0, 0)
 //    var pointChildParent = Point(0, 0)
@@ -116,25 +119,18 @@ class HomeFingerView(context: Context?) : View(context) {
         }
     }
 
-    fun onDrag(finger: Point): Any {
+    fun onDrag(finger: Point): Any? {
         val currentPage = updatePage()
-        val page = currentPage as CellContainer
 
         // update view item on finger
         item!!.updateView()
         itemBitmap = Tool.viewToBitmap(item!!)
 
         // one time call
-        if (startFingerLayout == null) {
-            startFingerLayout = finger
-            startFingerParent = item!!.getFingerParent(finger, page)
-            startFingerChild = item!!.getFingerChild(startFingerParent!!, item!!.childPosition!!)
+        if (startChildParent == null) {
+            startFingerParent = item!!.getFingerParent(finger)
+            startChildParent  = item!!.childPosition
         }
-
-        item!!.childPosition = Point(
-                item!!.getFingerParent(finger, page).x - startFingerChild!!.x,
-                item!!.getFingerParent(finger, page).y - startFingerChild!!.y
-        )
 
         pointParentLayout = Point(
                 finger.x - startFingerParent!!.x,
@@ -182,9 +178,28 @@ class HomeFingerView(context: Context?) : View(context) {
         // item!!.childPosition = pointChildParent
         // item!!.setChildPosition(finger, startFingerChild!!, page)
 
-        startFingerLayout = null
-        startFingerParent = null
-        startFingerChild = null
+
+//        // occupied guardian check
+//        item!!.onBorderOccupiedGuard()
+//        val i = mItem
+//        mItem = null
+//        itemBitmap = null
+//        startFingerChild = null
+//        startFingerParent = null
+//        pointParentLayout = Point(0, 0)
+//        pointChildParent = Point(0, 0)
+//        startFingerLayout = null
+//        startChildParent = null
+//        this.invalidate()
+
+//        item!!.onBorderOccupiedGuard(false)
+//        pointParentLayout = Point(0, 0)
+        startChildParent  = null
+//        startFingerParent = null
+
+//        startFingerLayout = null
+//        startFingerParent = null
+//        startFingerChild = null
 
 
         // this.invalidate()
@@ -218,15 +233,16 @@ class HomeFingerView(context: Context?) : View(context) {
 
     fun onStop(): Any? {
         // occupied guardian check
-        item!!.onBorderOccupiedGuard()
+        item!!.onBorderOccupiedGuard(true)
         val i = mItem
         mItem = null
         itemBitmap = null
-        startFingerChild = null
-        startFingerParent = null
-        pointParentLayout = Point(0, 0)
+//        startFingerChild = null
+//        startFingerParent = null
+//        pointParentLayout = Point(0, 0)
 //        pointChildParent = Point(0, 0)
-        startFingerLayout = null
+//        startFingerLayout = null
+        startChildParent = null
 
         this.invalidate()
         return i
