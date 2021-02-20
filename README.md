@@ -1,10 +1,9 @@
 ## (Development mode)
 <p align="center">
-  <img src="./github/Screenshot_1613835339.png" width="350" title="hover text">
-  <img src="./github/Screenshot_1613863047.png" width="350" alt="accessibility text">
-  <img src="./github/Screenshot_1613863057.png" width="350" alt="accessibility text">
+  <img src="./github/Screenshot_1613835339.png" width="350" alt="alt">
+  <img src="./github/Screenshot_1613863047.png" width="350" alt="alt">
+  <img src="./github/Screenshot_1613863057.png" width="350" alt="alt">
 </p>
-![Screenshot](./github/Screenshot_1613835339.png)
 
 # Goal:
 - learn reading large code (from other devs)
