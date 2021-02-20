@@ -1,6 +1,19 @@
 ## (Development mode)
 
-it is still in development, 1 main thing that is still not working correctly is the Touch on item and drag.
-this need to been rebuilded, all items can been dragged and dropped from all type of size and location.
+# Goal:
+- learn reading large code
+- update the code
+- change from java to kotlin the code
 
-i leave this so as it is, later will come back to this. my head can not handle this at this moment.
+I get the code from github and change the code to my needs, learn to read someone else his code.
+than after he worked smooth i did change the code from java to kotlin. (this cause some issues)
+
+
+Now i get to build some Website + App + Data System for a start-up company,
+when i am done with this and get some time over  i will come back to this project.
+
+# current issues still need to be fixed
+- drag and drop from items is not working (correctly)
+- clean the code from desktop
+
+
