@@ -15,8 +15,8 @@ I get the code from github and change the code to my needs, learn to read someon
 than after he worked smooth i did change the code from java to kotlin. (this cause some issues)
 
 
-Now i get to build some Website + App + Data System for a start-up company,
-when i am done with this and get some time over  i will come back to this project.
+For now i need first to do some internship to get a more stable mindset about everything,
+when i am done with this and get some time over i will come back to this project.
 
 # current issues still need to be fixed
 - drag and drop from `items` is not working (correctly)
